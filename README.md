@@ -10,9 +10,9 @@ This is a forum for doctor.
 
   - SQL server
 
-  - Soft ware: Visual studio 2019 .Net frameword, SQL Server Management Studio (SSMS) 18.7
+  - Software: Visual studio 2019 .Net frameword, SQL Server Management Studio (SSMS) 18.7
 
-  - Hard ware:
+  - Hardware:
 
       + A minimum computer system that will help you access all the tools in the courses is a Pentium 166 or better
 
@@ -26,7 +26,7 @@ This is a forum for doctor.
      + Create specialize + create topic
      + View private posts + update status private to public
      + Delete specializes + Delete topics + Delete users + Delete posts
-     + See admin's profile
+     + See admin's profile, user's profile
 
 
   - User: 
@@ -49,4 +49,4 @@ This is a forum for doctor.
     + Open project with file forum.sln
     + Open file appsettings.json and change your server
 
-  - Second, after change setting you ran run project, The default passowrd is 123456
+  - Second, after changing the setting you can run project, The default passowrd is 123456
