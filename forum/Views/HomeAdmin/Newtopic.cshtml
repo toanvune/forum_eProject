@@ -1,0 +1,125 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@model forum.Models.Topic
+
+
+
+<div class="m-subheader ">
+    <div class="d-flex align-items-center">
+        <div class="mr-auto">
+            <h3 class="m-subheader__title m-subheader__title--separator">New Topic</h3>
+            <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+                <li class="m-nav__item m-nav__item--home">
+                    <a asp-controller="homeadmin" asp-action="index" class="m-nav__link m-nav__link--icon">
+                        <i class="m-nav__link-icon la la-home"></i>
+                    </a>
+                </li>
+                <li class="m-nav__separator">-</li>
+                <li class="m-nav__separator"></li>
+                <li class="m-nav__item">
+                    <a asp-controller="homeadmin" asp-action="topic" class="m-nav__link">
+                        <i class="m-menu__link-icon flaticon-menu-2"></i>
+                    </a>
+                </li>
+                <li class="m-nav__separator"></li>
+                <li class="m-nav__separator">-</li>
+                <li class="m-nav__separator"></li>
+                <li class="m-nav__item">
+                    <a asp-controller="homeadmin" asp-action="newtopic" class="m-nav__link">
+                        <i class="m-nav__link-icon la la-plus-circle"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="m-content">
+    <div class="m-portlet m-portlet--tab">
+        <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                    <span class="m-portlet__head-icon m--hide">
+                        <i class="la la-gear"></i>
+                    </span>
+                    <h3 class="m-portlet__head-text">
+                        Create New Topic
+                    </h3>
+                </div>
+            </div>
+        </div>
+
+        <!--begin::Form-->
+        <form data-ajax-method="POST"
+              data-ajax-begin="onBegin"
+              data-ajax-complete="onComplete" asp-controller="homeadmin" asp-action="newtopic" data-ajax="true">
+            <div class="m-portlet__body">
+
+                <div class="form-group m-form__group">
+                    <label asp-for="@Model.TopicName">Topic Name</label>
+                    <input class="form-control m-input m-input--air m-input--pill" placeholder="TopicName" asp-for="TopicName" />
+                    <span asp-validation-for="TopicName" class="text-danger"></span>
+                </div>
+                <div class="form-group m-form__group">
+                    <label>Description</label>
+                    <textarea id="content" class="form-control form-control-lg ckeditor" asp-for="Description" placeholder="Description" rows="4">
+                                        </textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group m-form__group">
+                    @*<label ">SpecializeName</label>
+                    @Html.DropDownListFor(model => model.SpecializeId, ViewBag.x as SelectList, "--select--", new { @class = "form-control m-input m-input--air m-input--pill", id = "exampleSelect1", autocomplete = "off" })
+                    <input asp-for="SpecializeId" />
+                    <select>
+                            @foreach (var item in ViewBag.x)
+                            {
+                                <option>
+                                    @item.Content
+                                </option>
+                            }
+
+                        </select>*@
+                    <label asp-for="Specialize">SpecializeName</label>
+                    <input type="text" asp-for="SpecializeId" list="specializeList" class="form-control form-control-lg" placeholder="Name Specialize">
+                    <span asp-validation-for="Specialize" class="text-danger"></span>
+                    <datalist id="specializeList">
+                        @foreach (var item in ViewBag.x)
+                            {
+                                <option value="@item.Id" />
+                                @item.SpecializeName
+
+                            }
+
+                    </datalist>
+                </div>
+                @*<div>
+                        <select asp-for="SpecializeId"
+                                class="form-control" asp-items="@(new SelectList(ViewBag.Specializelist,"Value","Text"))">
+
+                        </select>
+                    </div>*@
+
+            </div>
+            <div class="m-portlet__foot m-portlet__foot--fit">
+                <div class="m-form__actions">
+                    @Html.HiddenFor(model => model.Id)
+                    <button type="submit" class="btn btn-brand" onclick="myFunction()">ENTER</button>
+                    <button type="reset" class="btn btn-secondary">CANCEL</button>
+                </div>
+
+            </div>
+        </form>
+
+
+        <!--end::Form-->
+    </div>
+
+</div>
+

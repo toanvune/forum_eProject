@@ -1,0 +1,86 @@
+﻿@{ ViewData["Title"] = "Post";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="content">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb bg-white mb-30">
+        <a class="breadcrumb-item" href="/"><i class="fas fa-home"></i></a>
+        <span class="breadcrumb-item active">Document</span>
+    </nav>
+    <!-- END Breadcrumb -->
+    <!-- Search -->
+    <!-- END Search -->
+
+    <div class="row">
+        <div class="col-lg-9">
+            <!--Sort By-->
+            <div class="block block-bordered mb-15">
+                <div class="d-flex justify-content-between align-items-center bg-gray-light">
+                    
+
+                    @*<div class="dropdown">
+
+                    <button type="button" class="btn btn-link text-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Sắp xếp: <strong id="show" class="text-danger">Mới nhất</strong>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right dropdown1">
+                        <a class="dropdown-item" id="default" name="sortBy" value="1" >
+                            Mới nhất
+                        </a>
+                        <a class="dropdown-item" name="sortBy" value="2" >
+                            Hoạt động
+                        </a>
+                        <a class="dropdown-item" name="sortBy" value="3" >
+                            Mới sửa
+                        </a>
+                    </div>
+                </div>*@
+
+                </div>
+                <script>
+                    $('#show').text($('#default').text());
+                    $('.dropdown1 button').click(function () {
+                        $('#show').text($(this).text());
+                    });</script>
+            </div>
+
+
+            <!--Result--><result></result>
+
+            
+            <!--adsbygoogle-->
+            <div class="my-15">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4680711340186781" data-ad-slot="1293612754" data-ad-format="auto"></ins>
+                <script>
+                    window.addEventListener('load', function () {
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    });
+                    (adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+            <!-- END Results -->
+        </div>
+        <div class="col-lg-3">
+            
+            <div class="block block-rounded">
+                <div class="block-header block-header-default">
+                    <h3 class="block-title font-w600">Topic</h3>
+                </div>
+                <div class="block-content block-content-full">
+                    <div class="asyncPartial" data-url="/question/sidebarquestion?type=Newest">
+                        @foreach (var item in ViewBag.topic)
+                        {
+                            <a class="btn btn-secondary btn-rounded btn-sm btn-noborder" asp-controller="home" asp-action="topic" asp-route-id="@item.Id">@item.TopicName <span class="text-muted">@item.Posts.Count</span> </a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- END Main Container -->

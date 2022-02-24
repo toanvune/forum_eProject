@@ -1,0 +1,85 @@
+﻿@model IEnumerable<forum.Models.Comment>
+@using Microsoft.AspNetCore.Http;
+@{ 
+    var cmt = new forum.Models.Comment();
+}
+@foreach (var item in Model)
+{
+    <div class="comment-item" id="comment-item-23099">
+        <div class="media border-top" style="padding-top: 15px; margin-top: 15px;">
+            <div class="media-left">
+                <a asp-controller="acount" asp-action="profileId" asp-route-id="@item.AccId"><img class="media-object avatar" src="/Content/images/avatar/@item.Acc.Photo"></a>
+            </div>
+            <div class="media-body" id="comment-body-23099" style="margin-left: 15px;">
+                <div class="comment-replacement" id="comment-replacement-23099">
+                    <div class="comment-heading text-muted">
+                        <a class="comment-author-name mr-5" asp-controller="acount" asp-action="profileId" asp-route-id="@item.AccId">@item.Acc.FullName</a>
+                        <span>Commented </span>
+                        <strong class="format-time" title="@item.CreatedAt">@item.CreatedAt</strong>
+                    </div>
+                    <div class="comment-body">
+                        @Html.Raw(item.Content)
+                    </div>
+                </div>
+                <div class="comment-footer">
+
+                    @if (item.AccId == Context.Session.GetInt32("id"))
+                    {
+                        <div class="dropdown d-inline-block">
+                            <button type="button" class="btn-block-option" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-fw fa-ellipsis-h"></i></button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" onclick="Edit(@item.Id); return false;"><i class="far fa-edit fa-fw"></i> Edit</a>
+                                <a class="dropdown-item" asp-controller="comment" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure about that?');"><i class="fas fa-trash-alt"></i> Delete</a>
+                            </div>
+                        </div>
+                    }
+                    @if (Context.Session.GetInt32("role") == 1)
+                    {
+                        <span class="pull-left margin-top-10">
+                            <a class="btn btn-danger btn-sm" asp-controller="comment" asp-action="delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure about that?')"><i class="fas fa-trash-alt"></i> Delete</a>
+                        </span>
+                    }
+
+
+
+                </div>
+
+                <div class="media" id="edit-@item.Id" style="display: none;">
+                    <div class="media-left d-none d-sm-block pr-10">
+
+                        <img class="media-object avatar" src="/Content/images/avatar/@Context.Session.GetString("photo")" />
+                    </div>
+                    <div class="media-body">
+                        <form asp-controller="comment" asp-action="edit" method="post">
+                            <input type="hidden" asp-for="@cmt.Id" value="@item.Id" />
+                            <input type="hidden" value="@item.AccId" asp-for="@cmt.AccId" />
+                            <input type="hidden" value="@item.PostId" asp-for="@cmt.PostId" />
+                            <textarea asp-for="@cmt.Content" placeholder="Comment in here" value="@item.Content"></textarea>
+                            <div class="pull-left margin-top-10">
+                                <span asp-validation-for="@cmt.Content" class="text-danger"></span>
+                            </div>
+                            <div class="mt-10">
+                                <button type="submit" class="btn btn-primary btn-noborder mr-5 btn-rounded " style="overflow: hidden; position: relative; z-index: 1;"><i class="fas fa-reply fa-fw"></i> Update</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+    function Edit(n) {
+        var x = document.getElementById("edit-" + n);
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
+

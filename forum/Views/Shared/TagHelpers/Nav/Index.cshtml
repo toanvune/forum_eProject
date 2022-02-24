@@ -1,0 +1,90 @@
+﻿<!-- Sidebar -->
+<nav id="sidebar">
+    <!-- Sidebar Scroll Container -->
+    <div id="sidebar-scroll">
+        <!-- Sidebar Content -->
+        <div class="sidebar-content">
+            <!-- Side Header -->
+            <div class="content-header content-header-fullrow px-15">
+                <!-- Mini Mode -->
+                <div class="content-header-section sidebar-mini-visible-b">
+                    <!-- Logo -->
+                    <span class="content-header-item font-w700 font-size-xl float-left animated fadeIn">
+                        <img width="25" src="~/Content/images/logo/logo_white 100x100.png" />
+
+                    </span>
+                    <!-- END Logo -->
+                </div>
+                <!-- END Mini Mode -->
+                <!-- Normal Mode -->
+                <div class="content-header-section text-center align-parent sidebar-mini-hidden">
+                    <!-- Close Sidebar, Visible only on mobile screens -->
+                    <button type="button" class="btn btn-circle btn-dual-secondary d-lg-none align-v-r" data-toggle="layout" data-action="sidebar_close">
+                        <i class="fa fa-times text-danger"></i>
+                    </button>
+                    <!-- END Close Sidebar -->
+                    <!-- Logo -->
+                    <div class="content-header-item">
+                        <a href="/">
+                            <img src="~/Content/images/logo/logo_white 100x100.png" width="100" height="34" />
+                        </a>
+                    </div>
+                    <!-- END Logo -->
+                </div>
+                <!-- END Normal Mode -->
+            </div>
+            <!-- END Side Header -->
+            <!-- Side User -->
+            
+            <!--<div class="content-side content-side-full content-side-user h-25 authen-side-mini-hide">-->
+                <!-- Visible only in normal mode -->
+                <!--<div class="sidebar-mini-hidden-b text-center">
+                    <a asp-controller="account" asp-action="signup" class="btn btn-sm btn-block btn-hero btn-outline-danger" data-toggle="click-ripple">
+                        <i class="fas fa-user-plus fa-fw"></i> Đăng ký
+                    </a>
+                    <a asp-controller="account" asp-action="login" class="btn btn-sm btn-block btn-hero btn-outline-primary" data-toggle="click-ripple">
+                        <i class="far fa-user fa-fw"></i> Đăng nhập
+                    </a>
+                </div>-->
+                <!-- END Visible only in normal mode -->
+            <!--</div>-->
+            @*<input type="hidden" id="common-authen" value="false" />*@
+
+            <!-- END Side User -->
+            <!-- Side Navigation -->
+
+            <div class="content-side content-side-full">
+                <ul class="nav-main">
+                    <li class="nav-main-heading">
+                        <span class="sidebar-mini-visible">PG</span>
+                        <span class="sidebar-mini-hidden">Pages</span>
+                    </li>
+
+                    <li>
+                        <a class="side-nav-question" asp-controller="home" asp-action="index"><i class="fa fa-question"></i><span class="sidebar-mini-hide">Posts</span></a>
+
+                    </li>
+                    <li>
+                        <a class="side-nav-doc" asp-controller="home" asp-action="index"><i class="fa fa-file"></i><span class="sidebar-mini-hide">Posts</span></a>
+                    </li>
+                    <li>
+                        <a class="side-nav-tag" asp-controller="home" asp-action="index"><i class="fa fa-tag"></i><span class="sidebar-mini-hide">Posts</span></a>
+                    </li>
+                    <li>
+                        <a class="side-nav-kter" asp-controller="home" asp-action="index"><i class="fa fa-users"></i><span class="sidebar-mini-hide">Posts</span></a>
+                    </li>
+                    <li>
+                        <a class="side-nav-about" asp-controller="home" asp-action="index"><i class="fa fa-info"></i><span class="sidebar-mini-hide">Posts</span></a>
+                    </li>                  
+                    <li>
+                        <a class="side-nav-contact" asp-controller="home" asp-action="index"><i class="fa fa-sticky-note"></i><span class="sidebar-mini-hide">Posts</span></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- END Side Navigation -->
+        </div>
+        <!-- Sidebar Content -->
+    </div>
+    <!-- END Sidebar Scroll Container -->
+</nav>
+<!-- END Sidebar -->

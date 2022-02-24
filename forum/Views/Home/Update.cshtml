@@ -1,0 +1,85 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model forum.Models.Post;
+<!-- Main Container -->
+<main id="main-container">
+
+    <!-- Hero -->
+    <!-- END Hero -->
+
+    <div class="content">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb bg-white mb-30">
+            <a class="breadcrumb-item" href="/"><i class="fas fa-home"></i></a>
+            <a class="breadcrumb-item" asp-controller="home" asp-action="index">Home</a>
+            <span class="breadcrumb-item active">Update</span>
+        </nav>
+        <!-- END Breadcrumb -->
+        <div class="row row-deck">
+            <div class="col-xl-12">
+                <div class="block block-rounded block-fx-shadow">
+                    <div class="block-header block-header-default">
+                        <h3 class="block-title font-w600"><i class="fas fa-pencil-alt fa-fw"></i> Edit your post</h3>
+                    </div>
+                    <div class="block-content pb-20">
+
+
+                        
+                        <div class="row">
+                            <form asp-controller="Home" asp-action="update" method="post">
+                                <input type="hidden" value="@Model.Id" asp-for="Id" />
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label >Post name</label>
+                                        <input class="form-control form-control-lg" placeholder="Name your post" type="text" value="@Model.PostName" asp-for="PostName" />
+                                        <span asp-validation-for="@Model.PostName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Content</label>
+                                        <textarea id="content" class="form-control form-control-lg ckeditor" asp-for="Content" placeholder="Content" rows="4" value="@Model.Content">
+        </textarea>
+                                        <span asp-validation-for="@Model.Content" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label >Topic</label>
+                                        <input type="text" asp-for="TopicId" list="topicList" class="form-control form-control-lg" placeholder="Name topic">
+                                        <span asp-validation-for="@Model.TopicId" class="text-danger"></span>
+                                        <datalist id="topicList">
+                                            @foreach (var item in ViewBag.Topic)
+                                            {
+                                                <option value="@item.Id" />
+                                                @item.TopicName
+
+                                            }
+
+                                        </datalist>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-12">
+                                    <div class="text-right">
+                                        <a asp-controller="home" asp-action="update" class="btn btn-link">Cancel</a>
+
+                                        <button type="submit" class="btn btn-primary min-width-100"><i class="fas fa-cloud-upload"></i> Save</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</main>
+<!-- END Main Container -->

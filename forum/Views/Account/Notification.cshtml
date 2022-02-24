@@ -1,0 +1,166 @@
+﻿@model X.PagedList.IPagedList<forum.Models.AccountNotification>;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Hero -->
+<div class="bg-image bg-image-bottom" style="background-image: url('/Content/images/banner/map.jpg');">
+    <div class="bg-primary-dark-op py-30">
+        <div class="content content-full text-center">
+            <!-- Avatar -->
+            <!-- END Personal -->
+            <!-- Actions -->
+            <!-- END Actions -->
+        </div>
+    </div>
+</div>
+<!-- END Hero -->
+<div class="bg-gray-light">
+    <div class="content py-0 text-center">
+        <ul class="nav nav-tabs nav-tabs-block bg-gray-light justify-content-center">
+            @*<li class="nav-item">
+                    <a class="nav-link active" asp-controller="account" asp-action="profile" asp-route-id="@Model.Id">Hồ sơ công khai</a>
+                </li>*@
+            <li class="nav-item">
+                <a class="nav-link " asp-controller="account" asp-action="publicprofile">Public profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" asp-controller="account" asp-action="notification">Notification</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="account" asp-action="editprofile">Edit Profile</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="content">
+    <div class="row">
+        <div class="my-15">
+            <div class="col-lg-9">
+                <div class="block block-rounded block-fx-shadow">
+                    <div class="block-header block-header-default">
+                        <h3 class="block-title font-w600">Notification</h3>
+                    </div>
+                    <div class="block-content">
+
+                        @if (Model == null)
+                        {
+                            <div class="block block-bordered mb-10">
+                                <div class="block-content block-content-full tab-content overflow-hidden">
+                                    <div class="media">
+                                        <p class="text-muted mb-5 text2-overflow-dot">
+                                            No announcement yet!
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="container-fluid mt-5">
+                                <div class="box-shadow">
+                                    <div class="mailbox-controls">
+                                        <div class="btn-group">
+                                        </div>
+
+                                    </div>
+                                    <div class="table-responsive mailbox-messages">
+                                        <table class="table table-hover table-striped xs-text sm-text">
+                                            <tbody>
+                                                @foreach (var item in Model)
+                                                {
+                                                    <tr>
+                                                        <td class="mailbox-star"><a href="#"><i class="fa fa-star @(item.Status?"text-yellow":"")"></i></a></td>
+                                                        <td class="mailbox-subject"><a href="@item.Notification.Url">@item.Notification.Title</a></td>
+                                                        <td class="mailbox-date">
+                                                            <small>
+                                                                
+                                                                <span class="format-time font-w600" style="display: block;" title="@item.Notification.Created">
+                                                                    
+                                                                </span>
+                                                                @*<span style="display: block;">
+                                                                    @item.Notification.Created.Value.ToString("HH:mm tt")
+                                                                </span>*@
+                                                            </small>
+                                                        </td>
+                                                   
+                                                        <td>
+                                                            <a class="btn btn-danger btn-sm" asp-controller="account" asp-action="hidenotification" asp-route-id="@item.Id" onclick="return confirm('Are you sure delete?')"><i class="fas fa-trash-alt"></i> Delete</a>
+                                                            
+                                                        </td>
+                                                    </tr>
+}
+
+                                            </tbody>
+                                        </table>
+                                        <!-- /.table -->
+                                    </div>
+                                    <!-- /.mail-box-messages -->
+                                   
+                                        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+                                        of @Model.PageCount <br/>  @Html.PagedListPager(Model, page => Url.Action("Notification", "account", new { page = page }), new X.PagedList.Web.Common.PagedListRenderOptions()
+                                                         {
+                                                             LiElementClasses = new[] { "page-item" },
+                                                             PageClasses = new[] { "page-link" }
+                                                         })
+                                    
+                                </div>
+                            </div>
+                        }
+                        @*<div class="col-md-8 col-lg-9">
+                                <div class="block block-rounded block-fx-shadow">
+                                    <div class="block-header block-header-default">
+                                        <h3 class="block-title font-w600">Detail</h3>
+                                    </div>
+                                    <div class="block-content">
+                                        <table class="table table-borderless table-vcenter">
+                                            <tbody id="history-wrapper">
+
+                                                <tr>
+                                                    <th style="width: 80px">
+                                                        <span class="font-w600">B&#224;i viết</span>
+                                                    </th>
+
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 80px">
+                                                        <span class="font-w600">C&#226;u hỏi</span>
+                                                    </td>
+                                                    <td>
+                                                        <h5 class="h6 mt-0 mb-0">
+                                                            <a href="/q/moi-nguoi-giup-em-voi-dc-ko-a-52049" class="mark-lookup">Mọi người gi&#250;p em với đc ko ạ</a>
+                                                        </h5>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <i class="format-time text-muted font-w600" title="2021-06-29 22:25:28">22:25 29-06-2021</i>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 80px">
+                                                        <span class="font-w600">C&#226;u hỏi</span>
+                                                    </td>
+                                                    <td>
+                                                        <h5 class="h6 mt-0 mb-0">
+                                                            <a href="/q/mn-giai-thich-giup-em-code-bai-nay-voi-a-52061" class="mark-lookup">m.n giải th&#237;ch gi&#250;p em code b&#224;i n&#224;y với ạ </a>
+                                                        </h5>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <i class="format-time text-muted font-w600" title="2021-06-29 22:25:03">22:25 29-06-2021</i>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>*@
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,196 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Detail_Post";
+    var cmt = new forum.Models.Comment();
+}
+@using System.Web;
+@using Microsoft.AspNetCore.Http;
+@using X.PagedList.Mvc;
+@using X.PagedList;
+@model forum.Models.Post;
+<!-- Main Container -->
+<main id="main-container">
+
+
+
+
+    <!-- Hero -->
+    <!-- END Hero -->
+
+    <div class="content">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb bg-white mb-30">
+            <a class="breadcrumb-item" asp-controller="home" asp-action="index"><i class="fas fa-home"></i></a>
+            <a class="breadcrumb-item" asp-controller="home" asp-action="index">Document</a>
+            @if (Model.Topic.TopicName != null || Model.Topic != null || Model.TopicId != null)
+            {
+                <span class="breadcrumb-item active">@Model.Topic.TopicName</span>
+            }
+
+        </nav>
+        <!-- END Breadcrumb -->
+
+        <div class="row">
+            <div class="col-xl-9">
+                <div class="block block-rounded block-fx-shadow" id="content-post-wrapper">
+                    <div class="block-content block-content-full border-b clearfix">
+                        <div class="mb-5">
+                            <div class="media">
+                                <div class="media-left pr-15">
+                                    <div class="asyncPartial" data-url="/documentation/docvotecontainer/487">
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <h1 class="mb-10 font-size-h2">
+                                        @Model.PostName
+                                        <span class="text-danger"></span>
+                                    </h1>
+                                    <div class="text-muted">
+                                        <span class="mr-15">
+                                            <a asp-controller="account" asp-action="profile" asp-route-id="@Model.AccId">
+                                                <img src="~/Content/images/avatar/@Model.Acc.Photo" class="avatar-xs mr-5 d-inline">
+                                                <span>@Model.Acc.FullName</span>
+                                            </a>
+                                            <span>
+                                                Created <span class="format-time font-w600" title="@Model.CreatedAt">@Model.CreatedAt</span>
+                                            </span>
+                                        </span>
+                                        <span class="mr-15 mt-5 d-block d-md-inline">
+                                            Active
+                                            <span class="format-time font-w600" title="@Model.UpdatedAt">@Model.UpdatedAt</span>
+                                        </span>
+                                        @if (Model.Acc.UserName == Context.Session.GetString("username"))
+                                        {
+                                            <span class="pull-left margin-top-10">
+                                                <a class="btn btn-secondary btn-sm" asp-controller="home" asp-action="update" asp-route-id="@Model.Id"><i class="fas fa-edit"></i> Edit</a>
+                                            </span>
+                                            <span class="pull-left margin-top-10">
+                                                <a class="btn btn-danger btn-sm" asp-controller="home" asp-action="delete" asp-route-id="@Model.Id" onclick="return confirm('Delete this post?')"><i class="fas fa-trash-alt"></i> Delete</a>
+                                            </span>
+                                        }
+                                        @if (Context.Session.GetInt32("role") == 1)
+                                        {
+                                            <span class="pull-left margin-top-10">
+                                                <a class="btn btn-danger btn-sm" asp-controller="home" asp-action="delete" asp-route-id="@Model.Id" onclick="return confirm('Delete this post?')"><i class="fas fa-trash-alt"></i> Delete</a>
+                                            </span>
+                                        }
+
+                                    </div>
+
+                                </div>
+                                <div class="mt-10 d-block d-xl-none">
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="block-content block-content-full">
+                        <div class="row">
+                            <div class="col-lg-9 order-1">
+                                <div class="d-block d-lg-block">
+                                    <p class="font-size-h5 font-w600 mb-5">
+                                        Content
+                                    </p>
+                                    <div class="document-outline">
+                                    </div>
+                                </div>
+                                <div id="content-post" class="content-post" style="min-height: 606px;">
+                                    @Html.Raw(Model.Content)
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="block block-rounded block-fx-shadow" id="comment-wrapper">
+                    <div class="block-header">
+                        <h3 class="block-title font-w600">Comment</h3>
+                    </div>
+                    
+                    <div class="block-content pt-0">
+                        @if (Context.Session.GetString("username") == null)
+                        {
+                            <div class="media">
+                                <div class="media-left d-none d-sm-block pr-10">
+
+                                    <img class="media-object avatar" src="/Content/images/avatar/avatar.png" />
+                                </div>
+                                <div class="media-body">
+                                    <div class="text-center p-20 border">
+                                        <p class="mb-10">You need to login for comment.</p>
+                                        <a class="btn btn-primary btn-noborder btn-rounded" asp-controller="account" asp-action="login">Login</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <form asp-controller="comment" asp-action="create" method="post">
+                                <div class="media">
+                                    <div class="media-left d-none d-sm-block pr-10">
+
+                                        <img class="media-object avatar" src="/Content/images/avatar/@Context.Session.GetString("photo")" />
+                                    </div>
+                                    <input type="hidden" asp-for ="@cmt.PostId" value="@Model.Id" />
+                                    <div class="media-body">
+                                        <textarea placeholder="Comment in here" asp-for="@cmt.Content"></textarea>
+                                        <div class="pull-left margin-top-10">
+                                            <span asp-validation-for="@cmt.Content" class="text-danger"></span>
+                                        </div>
+                                        <div class="mt-10">
+                                            <button type="submit" class="btn btn-primary btn-noborder mr-5 btn-rounded " style="overflow: hidden; position: relative; z-index: 1;"><i class="fas fa-reply fa-fw"></i> Comment</button>
+                                            @*<a class="btn btn-outline-secondary btn-rounded js-click-ripple-enabled" href="#" onclick="CancelComment(); return false;" data-toggle="click-ripple" style="overflow: hidden; position: relative; z-index: 1;">Cancel</a>*@
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </form>
+                            
+                        }
+
+
+
+                    </div>
+                    <div class="block-content">
+                        <div id="comment-list" class="mb-20">
+                            <partial name="~/Views/Comment/Comment.cshtml" model="Model.Comments.OrderByDescending(i => i.CreatedAt)"></partial>
+
+                        </div>
+                            <!-- END Discussion -->
+                        </div>
+                            </div>
+
+
+            </div>
+            <div class="col-xl-3">
+                <div class="asyncPartial" >
+                </div>
+                <div class="block block-rounded">
+                    <div class="block-header block-header-default">
+                        <h3 class="block-title font-w600">Lastest post</h3>
+                    </div>
+                    <div class="block-content block-content-full">
+                        <div class="asyncPartial">
+                            @foreach (var item in ViewBag.lastest)
+                            {
+                                <a class="btn btn-secondary btn-rounded btn-sm btn-noborder" asp-controller="home" asp-action="detail" asp-route-id="@item.Id">@item.PostName</a><br />
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+        </div>
+    </div>
+</main>
+<!-- END Main Container -->

@@ -1,0 +1,99 @@
+﻿@model forum.Models.Account
+@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="content">
+    <div class="row">
+        <!-- Billing Address -->
+        <div class="col-lg-6">
+            <div class="block block-rounded block-fx-shadow">
+                <div class="block-header block-header-default">
+                    <h3 class="block-title font-w600"><i class="fa fa-info-circle"></i> Info</h3>
+                </div>
+                <div class="block-content text-dark">
+                    <div class="media">
+                        <a class="media-left pr-20" href="javascript:;">
+                            <img class="media-object avatar-lg" src="/Content/images/avatar/@Model.Photo">
+                        </a>
+                        <div class="media-body">
+                            <div class="font-size-lg font-w600 text-black mb-10">
+                                Username : @Model.UserName
+                            </div>
+                            <div class="mb-10">
+
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="h5 mb-10 text-muted">
+                        <i class="far fa-address-card fa-fw"></i>
+                        Personal Information
+                    </div>
+                    <div class="mb-5">
+                        Fullname :
+                        <strong>@Model.FullName</strong>
+                    </div>
+                    <div class="mb-5">
+                        Gender :
+                        <strong>@Model.Gender</strong>
+                    </div>
+                    <div class="mb-5">
+                        Birthday :
+                        <strong>@Model.Birthday.ToString("dd/MM/yyyy")</strong>
+                    </div>
+                    <div class="mb-5">
+                        Email :
+                        <strong>@Model.Email</strong>
+                    </div>
+                    <div class="mb-5">
+                        Adress :
+                        <strong>@Model.Address</strong>
+                    </div>
+                    <div class="mb-20"></div>
+                    <div class="h5 mb-10 text-muted">
+                        <i class="fas fa-star fa-fw"></i>
+                        Note
+
+                    </div>
+                    <div class="mb-5">
+                        Professional
+                        <strong>@Model.Professional</strong>
+                    </div>
+                    <div class="mb-5">
+                        Qualification
+                        <strong>@Model.Qualification</strong>
+
+                    </div>
+                    <div class="mb-5">
+                        Experience
+                        <strong>@Model.Experience</strong>
+                    </div>
+                    <div class="mb-5">
+                        Achievement
+                        <strong>@Model.Achievement</strong>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- END Billing Address -->
+    </div>
+    <!-- END Addresses -->
+</div>
+
+<div class="content pt-0">
+
+    <div class="my-15">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-4680711340186781"
+             data-ad-slot="1293612754"
+             data-ad-format="auto"></ins>
+        <script>
+            //window.addEventListener('load', function () {
+            //    (adsbygoogle = window.adsbygoogle || []).push({});
+            //});
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+</div>

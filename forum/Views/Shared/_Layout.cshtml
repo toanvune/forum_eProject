@@ -1,0 +1,236 @@
+﻿
+@using Microsoft.AspNetCore.Session
+@using Microsoft.AspNetCore.Http
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+
+
+    <title>@ViewData["Title"]</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/main/styles.css" />
+    <link href="~/css/cmt.css"/>
+    <link rel="Shortcut Icon" href="~/ekg-3312504_1920.ico" type="image/x-icon" />
+
+
+</head>
+<body>
+    <div id="page-container" class="side-scroll page-header-glass page-header-inverse page-header-fixed main-content-narrow sidebar-inverse side-trans-enabled sidebar-o">
+
+        <!--nav--> <webnav></webnav>
+        <!--Learn Menu--> <learnmenu></learnmenu>
+
+        <!--header--><webhead></webhead>
+
+        <div class="container">
+            <main role="main" class="pb-3">
+                <hero></hero>
+                @RenderBody()
+            </main>
+        </div>
+
+        <!-- Footer --> <webfoot></webfoot>
+
+
+
+
+        <div class="modal fade" id="authen-modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="block block-themed block-transparent">
+                        <div class="block-header bg-primary">
+                            <h3 class="block-title font-w600">Requires Login</h3>
+                            <div class="block-options">
+                                <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+                                    <i class="fa fa-close"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="block-content">
+                            <div class="text-center p-20 border">
+                                <p class="mb-10">To use this Feature, You need to Login</p>
+                                <a class="btn btn-primary btn-noborder" href="/account/login?ReturnUrl=%2Fdocumentation">Đăng nhập</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="adblockModal" style="display: none;">
+            <div class="text-center">
+                <i class="fas fa-eye-slash fa-3x text-danger mb-20"></i>
+                <h4 class="text-danger font-w600">AD BLOCKER DETECTED</h4>
+                <p>
+                    Để xem được nội dung và giúp B2T duy trì hoạt động. <br />
+                    <strong>Bạn vui lòng tắt Adblock trên website <a href="www.howkteam.com">www.howkteam.vn</a> nhé!</strong>
+                </p>
+            </div>
+        </div>
+
+        <div class="modal fade" id="adsPopupModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content bg-transparent">
+                    <div class="block block-themed block-transparent">
+                        <div class="block-header bg-transparent">
+                            <h3 class="block-title font-w600"></h3>
+                            <div class="block-options">
+                                <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+                                    <i class="fa fa-close fa-2x"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="block-content block-content-sm text-center">
+                            <a href="#" target="_blank">
+                                <img src="" class="img-fluid w-100" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*@*@<!--*</div>*-->@*@*@
+
+            <!-- END Footer -->
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.esm.min.js" integrity="sha384-pXJyILVSfKOB4xKYbM0dJr+oH4iVvo4s7mWbiTHe6LSxd38hl16DMj6AOJyy2Wcz" crossorigin="anonymous"></script>
+
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        @*<script src="~/bundles/common-libs.js"></script>*@
+        <script src="~/js/site.js"></script>
+
+
+
+        <script src="~/bundles/theme-libs.js"></script>
+
+        <script src="~/main/js.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/signalr.js/2.4.1/jquery.signalR.min.js"></script>
+
+        <script src="~/signalr/hubs.js"></script>
+
+
+
+
+        <script>$("a.side-nav-doc").addClass("active");</script>
+
+
+        <!--============ facebook =================== -->
+        <div id="fb-root"></div>
+        <script>
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&autoLogAppEvents=1&version=v3.2&appId=1105161409531317';
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+        <!--============ end facebook =================== -->
+        <!--============ Google Analytics =================== -->
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-84622810-1', 'auto');
+            ga('send', 'pageview');</script>
+        <!--============ End Google Analytics =================== -->
+        <!--Tinymce-->
+
+        <script src="https://cdn.tiny.cloud/1/76aa4hyjnmu9barsq13zrsaslb5kdjautp6g3yny6tiqidiu/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+        <script>
+            tinymce.init({
+                selector: 'textarea',
+                plugins: 'image code autolink link ',
+                toolbar: 'undo redo | link image | code | formatselect | ' +
+                    'bold italic backcolor | alignleft aligncenter ' +
+                    'alignright alignjustify | bullist numlist outdent indent | ' +
+                    'removeformat | help',
+                /* enable title field in the Image dialog*/
+                image_title: true,
+                /* enable automatic uploads of images represented by blob or data URIs*/
+                automatic_uploads: true,
+                /*
+                  URL of our upload handler (for more details check: https://www.tiny.cloud/docs/configure/file-image-upload/#images_upload_url)
+                  images_upload_url: 'postAcceptor.php',
+                  here we add custom filepicker only to Image dialog
+                */
+                file_picker_types: 'image',
+                /* and here's our custom image picker*/
+                file_picker_callback: function (cb, value, meta) {
+                    var input = document.createElement('input');
+                    input.setAttribute('type', 'file');
+                    input.setAttribute('accept', 'image/*');
+
+                    /*
+                      Note: In modern browsers input[type="file"] is functional without
+                      even adding it to the DOM, but that might not be the case in some older
+                      or quirky browsers like IE, so you might want to add it to the DOM
+                      just in case, and visually hide it. And do not forget do remove it
+                      once you do not need it anymore.
+                    */
+
+                    input.onchange = function () {
+                        var file = this.files[0];
+
+                        var reader = new FileReader();
+                        reader.onload = function () {
+                            /*
+                              Note: Now we need to register the blob in TinyMCEs image blob
+                              registry. In the next release this part hopefully won't be
+                              necessary, as we are looking to handle it internally.
+                            */
+                            var id = 'blobid' + (new Date()).getTime();
+                            var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+                            var base64 = reader.result.split(',')[1];
+                            var blobInfo = blobCache.create(id, file, base64);
+                            blobCache.add(blobInfo);
+
+                            /* call the callback and populate the Title field with the file name */
+                            cb(blobInfo.blobUri(), { title: file.name });
+                        };
+                        reader.readAsDataURL(file);
+                    };
+
+                    input.click();
+                },
+                content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+            });
+        </script>
+
+
+
+        @await RenderSectionAsync("Scripts", required: false)
+
+    </div>
+</body>
+</html>

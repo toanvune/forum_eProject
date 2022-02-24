@@ -1,0 +1,228 @@
+﻿@model forum.Models.Account
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<main id="main-container">
+
+    <!-- Hero -->
+    <div class="bg-image bg-image-bottom" style="background-image: url('~/Content/images/banner/map.jpg');">
+        <div class="bg-primary-dark-op py-30">
+            <div class="content content-full text-center">
+                <!-- Avatar -->
+                <div class="mb-15">
+                    <a class="img-link">
+                        <img class="img-avatar img-avatar96 img-avatar-thumb" src="/Content/images/avatar/@Model.Photo">
+                    </a>
+                </div>
+                <!-- END Avatar -->
+                <!-- Personal -->
+                <h1 class="h3 text-white font-w700 mb-10">
+                    @Model.FullName
+                </h1>
+                <!-- END Personal -->
+                <!-- Actions -->
+                <!-- END Actions -->
+            </div>
+        </div>
+    </div>
+    <!-- END Hero -->
+    <div class="bg-gray-light">
+        <div class="content py-0 text-center">
+            <ul class="nav nav-tabs nav-tabs-block bg-gray-light justify-content-center">
+
+
+                @*<li class="nav-item">
+                        <a class="nav-link active" asp-controller="account" asp-action="publicprofile">Hồ sơ công khai</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="u-nav-notifications" asp-controller="account" asp-action="notification">Thông báo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="u-nav-edit" asp-controller="account" asp-action="editprofile">Chỉnh sửa Hồ sơ & Cài đặt</a>
+                    </li>*@
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="account" asp-action="publicprofile">Public profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="account" asp-action="notification">Notification</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" asp-controller="account" asp-action="editprofile">Edit Profile</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="row">
+            <div class="col-lg-3">
+
+                <div class="block block-rounded block-fx-shadow">
+                    <div class="block-header block-header-default">
+                        <h3 class="block-title font-w600"><i class="fas fa-cog fa-fw"></i> Setting</h3>
+                    </div>
+                    <div class="block-content">
+                        <ul class="nav nav-pills flex-column push">
+
+
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center justify-content-between" id="u-vnav-password" asp-controller="account" asp-action="changepass" >
+                                    <span><i class="fa fa-fw fa-key mr-5"></i> Change Pass</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="my-15">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-4680711340186781"
+                         data-ad-slot="1293612754"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        //window.addEventListener('load', function () {
+                        //    (adsbygoogle = window.adsbygoogle || []).push({});
+                        //});
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+
+
+            <div class="my-15">
+                <div class="col-lg-9">
+                    <div class="block block-rounded block-fx-shadow">
+                        <div class="block-header block-header-default">
+                            <h3 class="block-title font-w600">Edit Profile</h3>
+                        </div>
+                        <div class="block-content">
+                            <!-- User Profile -->
+                            <form asp-controller="account" asp-action="editprofile" id="editForm" enctype="multipart/form-data" method="post" role="form">
+                                <h2 class="content-heading text-black pt-0">Basic informationn</h2>
+                                <div class="row items-push">
+                                    <div class="col-lg-3">
+                                        <p class="text-muted">
+                                            Introduce people to know more about you. Some information will be publicly visible.
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-7 offset-lg-1">
+                                        <div class="form-group row">
+                                            <div class="col-12">
+                                                <label>Photo</label>
+                                                @*<input class="form-control form-control-lg" type="file" name="file" />*@
+                                                <input type="file" name="file" />
+                                                <img class="img-avatar img-avatar96 img-avatar-thumb" src="/Content/images/avatar/@Model.Photo">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-12">
+                                                <label asp-for="FullName">Full name</label>
+                                                <input class="form-control form-control-lg" asp-for="FullName" type="text" value="@Model.FullName" />
+                                                <span class="field-validation-valid text-danger" asp-validation-for="FullName"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row gutters-tiny">
+                                            <div class="col-9">
+                                                <label asp-for="Birthday">Birthday</label>
+                                                <input class="js-datepicker form-control form-control-lg" disabled="disabled" asp-for="Birthday" type="text" value="@Model.Birthday.ToString("dd/MM/yyyy")" />
+                                                <span class="field-validation-valid text-danger" asp-validation-for="Birthday"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row gutters-tiny">
+                                            <div class="col-9">
+                                                <label asp-for="Gender">Gender</label>
+                                                <select class="form-control form-control-lg" asp-for="Gender">
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-12">
+                                                <label asp-for="Mobile">Phone number</label>
+                                                <input disabled="disabled" class="form-control form-control-lg" asp-for="Mobile" type="text" value="@Model.Mobile" />
+                                                <span class="field-validation-valid text-danger" asp-validation-for="Mobile"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-12">
+                                                <label asp-for="Email">Email</label>
+                                                <input disabled="disabled" class="form-control form-control-lg" asp-for="Email" type="text" value="@Model.Email" />
+                                                <span class="field-validation-valid text-danger" asp-validation-for="Email"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-12">
+                                                <label asp-for="Address">Address</label>
+                                                <input class="form-control form-control-lg" asp-for="Address" type="text" value="@Model.Address" />
+                                                <span class="field-validation-valid text-danger" asp-validation-for="Address"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-12">
+                                                <label asp-for="Professional">Professional</label>
+                                                <input class="form-control form-control-lg" asp-for="Professional" type="text" value="@Model.Professional" />
+                                                <span class="field-validation-valid text-danger" asp-validation-for="Professional"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-12">
+                                                <label asp-for="Qualification">Qualification</label>
+                                                <input class="form-control form-control-lg" asp-for="Qualification" type="text" value="@Model.Qualification" />
+                                                <span class="field-validation-valid text-danger" asp-validation-for="Qualification"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-12">
+                                                <label asp-for="Experience">Experience</label>
+                                                <input class="form-control form-control-lg" asp-for="Experience" type="text" value="@Model.Experience" />
+                                                <span class="field-validation-valid text-danger" asp-validation-for="Experience"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-12">
+                                                <label asp-for="Achievement">Achievement</label>
+                                                <input class="form-control form-control-lg" asp-for="Achievement" type="text" value="@Model.Achievement" />
+                                                <span class="field-validation-valid text-danger" asp-validation-for="Achievement"></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                @*<div class="col-3 text-right">
+                                        <label class="d-block">Public</label>
+                                        <label class="css-control css-control-success css-control-lg css-switch">
+                                            <input class="css-control-input" asp-for="Public" type="checkbox" value="true" />
+                                            <span class="css-control-indicator"></span>
+                                        </label>
+                                    </div>*@
+                                <div class="form-group row mt-20">
+                                    <div class="col-12">
+                                        <div>&nbsp;</div>
+                                        <button type="submit" class="btn btn-primary btn-noborder"><i class="fas fa-save fa-fw"></i> Save</button>
+                                    </div>
+                                </div>
+                            </form>                    <!-- END User Profile -->
+                        </div>
+                    </div>
+
+                    <div class="my-15">
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-4680711340186781"
+                             data-ad-slot="1293612754"
+                             data-ad-format="auto"></ins>
+                        <script>
+                            window.addEventListener('load', function () {
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                            });
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</main>

@@ -1,0 +1,100 @@
+﻿@model X.PagedList.IPagedList<forum.Models.Post>;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@using Microsoft.AspNetCore.Http;
+
+<!-- Results -->
+
+
+    @if (Model == null)
+    {
+        <div class="block block-bordered mb-10">
+            <div class="block-content block-content-full tab-content overflow-hidden">
+                <div class="media">
+                    <p class="text-muted mb-5 text2-overflow-dot">
+                        There are no posts yet
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        @foreach (var post in Model)
+        {
+<div class="block block-bordered mb-10">
+    <div class="block-content block-content-full tab-content overflow-hidden">
+        <div class="media">
+            <div class="media-left pr-20">
+                <a asp-controller="home" asp-action="detail" asp-route-id="@post.Id">
+                    <img class="media-object avatar" src="~/Content/images/avatar/@post.Acc.Photo" />
+                </a>
+            </div>
+            <div class="media-body">
+                <a class="font-size-xs font-w600 d-block" asp-controller="account" asp-action="profile" asp-route-id="@post.AccId">
+                    <span>@post.Acc.FullName</span>
+
+                </a>
+                <a asp-controller="home" asp-action="detail" asp-route-id="@post.Id">
+                    <h4 class="h5 mb-5 mr-5 d-inline-block">
+                        <span class="mark-lookup">@post.PostName</span>
+                    </h4>
+                </a>
+                <div class="font-sm mb-5 text-muted">
+
+                    <span>
+                        <a asp-controller="home" asp-asp-action="detail" asp-route-id="@post.Id">
+                            <img src="~/Content/images/avatar/@post.Acc.Photo" class="avatar-xs mr-5 d-inline">
+                            <span>@post.Acc.FullName</span>
+                        </a>
+                        <span class="mr-10">
+                            <i class="far fa-fw fa-comment fa-fw"></i>
+                            <span>@post.Comments.Count</span>
+                        </span>
+                        <span>Active</span>
+                        <em class="format-time font-w600" title=" @post.UpdatedAt "></em>
+                    </span>
+
+                </div>
+
+            </div>
+            @if (post.Acc.UserName == Context.Session.GetString("username"))
+            {
+                <div class="pull-left margin-top-10">
+                    <a class="btn btn-secondary btn-sm" asp-controller="home" asp-action="update" asp-route-id="@post.Id"><i class="fas fa-edit"></i> Edit</a>
+                    <a class="btn btn-danger btn-sm" asp-controller="home" asp-action="delete" asp-route-id="@post.Id" onclick="return confirm('Delete this post?')"><i class="fas fa-trash-alt"></i> Delete</a>
+                </div>
+            }
+            @if(Context.Session.GetInt32("role") == 1) 
+            {
+                <div class="pull-left margin-top-10">
+                    <a class="btn btn-danger btn-sm" asp-controller="home" asp-action="delete" asp-route-id="@post.Id" onclick="return confirm('Delete this post?')"><i class="fas fa-trash-alt"></i> Delete</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+                }
+                }
+
+
+
+            
+
+            <div>
+
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }), new X.PagedList.Web.Common.PagedListRenderOptions()
+                {
+                    LiElementClasses = new[] { "page-item" },
+                    PageClasses = new[] { "page-link" },
+
+
+                })
+
+
+
+            </div>
+
+
+

@@ -1,0 +1,157 @@
+﻿
+@using Microsoft.AspNetCore.Http;
+
+
+<!-- Header -->
+@if (Context.Session.GetString("username") == null && Context.Session.GetString("password") == null)
+{
+<header id="page-header">
+    <!-- Header Content -->
+    <div class="content-header">
+        <!-- Left Section -->
+
+        <div class="content-header-section">
+
+            <button type="button" class="btn btn-circle btn-dual-secondary" data-toggle="layout" data-action="sidebar_toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <!-- END Toggle Sidebar -->
+            <span class="header-logo-hide">
+                <a href="/">
+                    <img src="~/Content/images/logo/logo_white 100x100.png" width="100" height="34" />
+                </a>
+            </span>
+        </div>
+        <!-- END Left Section -->
+        <!-- Right Section -->
+        <div class="content-header-section">
+            <!-- Open Search Section -->
+            <button type="button" class="btn btn-circle btn-dual-secondary" data-toggle="layout" data-action="header_search_on">
+                <i class="fa fa-search"></i>
+            </button>
+            <!-- END Open Search Section -->
+            <!-- User Dropdown -->
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-rounded btn-dual-secondary" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="~/Content/images/avatar/avatar.png" class="avatar-xs align-bottom mr-5" />
+                    <span class="mr-5">Account</span>
+                    <i class="fa fa-angle-down"></i>
+                </button>
+
+                <div class="dropdown-menu dropdown-menu-right min-width-150" aria-labelledby="page-header-user-dropdown">
+
+                    <a class="dropdown-item" asp-controller="account" asp-action="login">
+                        <i class="far fa-user fa-fw"></i> Login
+                    </a>
+                    <a class="dropdown-item" asp-controller="account" asp-action="signup">
+                        <i class="fas fa-user-plus fa-fw"></i> Sign up
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- END Right Section -->
+    </div>
+    <!-- END Header Content -->
+    <!-- Header Search -->
+
+    <div id="page-header-search" class="overlay-header">
+        <div class="content-header content-header-fullrow">
+            <form asp-controller="home" asp-action="index">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <!-- Close Search Section -->
+                        <button type="button" class="btn btn-secondary" data-toggle="layout" data-action="header_search_off">
+                            <i class="fa fa-times"></i>
+                        </button>
+                        <!-- END Close Search Section -->
+                    </div>
+                    <input type="text" class="form-control" placeholder="Search or hit ESC.." name="keyword">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-secondary">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- END Header Search -->
+</header> }
+            else
+            {
+<header id="page-header">
+    <!-- Header Content -->
+    <div class="content-header">
+        <!-- Left Section -->
+
+        <div class="content-header-section">
+
+            <button type="button" class="btn btn-circle btn-dual-secondary" data-toggle="layout" data-action="sidebar_toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <!-- END Toggle Sidebar -->
+            <span class="header-logo-hide">
+                <a href="/">
+                    <img src="~/Content/images/logo/logo_white 100x100.png" width="100" height="34" />
+                </a>
+            </span>
+        </div>
+        <!-- END Left Section -->
+        <!-- Right Section -->
+        <div class="content-header-section">
+            <!-- Open Search Section -->
+            <button type="button" class="btn btn-circle btn-dual-secondary" data-toggle="layout" data-action="header_search_on">
+                <i class="fa fa-search"></i>
+            </button>
+            <!-- END Open Search Section -->
+            <!-- User Dropdown -->
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-rounded btn-dual-secondary" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="~/Content/images/avatar/@Context.Session.GetString("photo")" class="avatar-xs align-bottom mr-5" />
+                    <span class="mr-5">@Context.Session.GetString("fullname")</span>
+                    <i class="fa fa-angle-down"></i>
+                </button>
+
+                <div class="dropdown-menu dropdown-menu-right min-width-150" aria-labelledby="page-header-user-dropdown">
+                    <a class="dropdown-item" asp-controller="account" asp-action="publicprofile">
+                        <i class="far fa-user fa-fw"></i> Profile
+                    </a>
+                    <a class="dropdown-item" asp-controller="account" asp-action="logout">
+                        <i class="fa fa-user-times"></i> Logout
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- END Right Section -->
+    </div>
+    <!-- END Header Content -->
+    <!-- Header Search -->
+
+    <div id="page-header-search" class="overlay-header">
+        <div class="content-header content-header-fullrow">
+            <form asp-controller="home" asp-action="index">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <!-- Close Search Section -->
+                        <button type="button" class="btn btn-secondary" data-toggle="layout" data-action="header_search_off">
+                            <i class="fa fa-times"></i>
+                        </button>
+                        <!-- END Close Search Section -->
+                    </div>
+                    <input type="text" class="form-control" placeholder="Search or hit ESC.." name="keyword">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-secondary">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- END Header Search -->
+</header>}
+<!-- END Header -->

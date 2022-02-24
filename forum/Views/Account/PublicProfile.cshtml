@@ -1,0 +1,154 @@
+﻿@model forum.Models.Account
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Hero -->
+<div class="bg-image bg-image-bottom" style="background-image: url('/Content/images/banner/map.jpg');">
+    <div class="bg-primary-dark-op py-30">
+        <div class="content content-full text-center">
+            <!-- Avatar -->
+            <div class="mb-15">
+                <a class="img-link" asp-controller="account" asp-action="profile" asp-route-id="@Model.Id">
+                    <img class="img-avatar img-avatar96 img-avatar-thumb" src="/Content/images/avatar/@Model.Photo">
+                </a>
+            </div>
+            <!-- END Avatar -->
+            <!-- Personal -->
+            <h1 class="h3 text-white font-w700 mb-10">
+                @Model.FullName
+            </h1>
+            
+            <!-- END Personal -->
+            <!-- Actions -->
+            <!-- END Actions -->
+        </div>
+    </div>
+</div>
+<!-- END Hero -->
+<div class="bg-gray-light">
+    <div class="content py-0 text-center">
+        <ul class="nav nav-tabs nav-tabs-block bg-gray-light justify-content-center">
+            @*<li class="nav-item">
+                <a class="nav-link active" asp-controller="account" asp-action="profile" asp-route-id="@Model.Id">Hồ sơ công khai</a>
+            </li>*@
+            <li class="nav-item">
+                <a class="nav-link active" asp-controller="account" asp-action="publicprofile">Public profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="account" asp-action="notification">Notification</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="account" asp-action="editprofile">Edit Profile</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="content">
+    <div class="row">
+        <!-- Billing Address -->
+        <div class="col-lg-6">
+            <div class="block block-rounded block-fx-shadow">
+                <div class="block-header block-header-default">
+                    <h3 class="block-title font-w600"><i class="fa fa-info-circle"></i> Hồ Sơ</h3>
+                </div>
+                <div class="block-content text-dark">
+                    <div class="media">
+                        <a class="media-left pr-20" href="javascript:;">
+                            <img class="media-object avatar-lg" src="/Content/images/avatar/@Model.Photo">
+                        </a>
+                        <div class="media-body">
+                            <div class="font-size-lg font-w600 text-black mb-10">
+                                Username : @Model.UserName
+                            </div>
+
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="h5 mb-10 text-muted">
+                        <i class="far fa-address-card fa-fw"></i>
+                        Personal Information
+                    </div>
+                    <div class="mb-5">
+                        Fullname :
+                        <strong>@Model.FullName</strong>
+                    </div>
+                    <div class="mb-5">
+                        Gender :
+                        <strong>@Model.Gender</strong>
+                    </div>
+                    <div class="mb-5">
+                        Birthday :
+                        <strong>@Model.Birthday.ToString("dd/MM/yyyy")</strong>
+                    </div>
+                    <div class="mb-5">
+                        Email :
+                        <strong>@Model.Email</strong>
+                    </div>
+                    <div class="mb-5">
+                        Adress :
+                        <strong>@Model.Address</strong>
+                    </div>
+                    <div class="mb-20"></div>
+                    <div class="h5 mb-10 text-muted">
+                        <i class="fas fa-star fa-fw"></i>
+                        Note
+
+                    </div>
+                    <div class="mb-5">
+                        Professional
+                        <strong>@Model.Professional</strong>
+                    </div>
+                    <div class="mb-5">
+                        Qualification
+                        <strong>@Model.Qualification</strong>
+
+                    </div>
+                    <div class="mb-5">
+                        Experience
+                        <strong>@Model.Experience</strong>
+                    </div>
+                    <div class="mb-5">
+                        Achievement
+                        <strong>@Model.Achievement</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END Billing Address -->
+        <!-- Shipping Address -->
+        @*<div class="col-lg-6">
+            <div class="block block-rounded block-fx-shadow">
+                <div class="block-header block-header-default">
+                    <h3 class="block-title font-w600"><i class="fa fa-chart-bar"></i> Thống kê</h3>
+                </div>
+                <div class="block-content pb-20">
+                    <div class="mb-5"><i class="far fa-star fa-fw"></i> <span class="font-w600">0</span> điểm uy tín</div>
+                    <div class="mb-5"><i class="far fa-eye fa-fw"></i> <span class="font-w600">8</span> lượt xem hồ sơ</div>
+                    <div class="mb-5"><i class="far fa-clock fa-fw"></i> Xem lần cuối <span class="format-time font-w600" title="2021-06-29 22:27:21">29/06/2021 10:27:21 PM</span></div>
+                    <div class="mb-5"><i class="far fa-calendar fa-fw"></i> Tham gia <span class="format-time font-w600" title="2021-06-29 22:14:53">29/06/2021 10:14:53 PM</span></div>
+                </div>
+            </div>
+        </div>*@
+        <!-- END Shipping Address -->
+    </div>
+    <!-- END Addresses -->
+</div>
+
+<div class="content pt-0">
+
+    <div class="my-15">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-4680711340186781"
+             data-ad-slot="1293612754"
+             data-ad-format="auto"></ins>
+        <script>
+            //window.addEventListener('load', function () {
+            //    (adsbygoogle = window.adsbygoogle || []).push({});
+            //});
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+</div>

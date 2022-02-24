@@ -1,0 +1,290 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<main id="main-container">
+
+    <!-- Hero -->
+    <div class="bg-image bg-image-bottom" style="background-image: url('~/Content/images/banner/map.jpg');">
+        <div class="bg-primary-dark-op py-30">
+            <div class="content content-full text-center">
+                <!-- Avatar -->
+                <div class="mb-15">
+                    <a class="img-link" href="/users/d2288dea-4043-4700-923d-4b383f95631e">
+                        <img class="img-avatar img-avatar96 img-avatar-thumb" src="/Content/images/avatar/avatar.png">
+                    </a>
+                </div>
+                <!-- END Avatar -->
+                <!-- Personal -->
+                <h1 class="h3 text-white font-w700 mb-10">
+                    nicotin
+                </h1>
+                <!-- END Personal -->
+                <!-- Actions -->
+                <!-- END Actions -->
+            </div>
+        </div>
+    </div>
+    <!-- END Hero -->
+    <div class="bg-gray-light">
+        <div class="content py-0 text-center">
+            <ul class="nav nav-tabs nav-tabs-block bg-gray-light justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link" id="u-nav-profile" href="/users/d2288dea-4043-4700-923d-4b383f95631e">Hồ sơ công khai</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" id="u-nav-history" href="/users/history/d2288dea-4043-4700-923d-4b383f95631e">Lịch sử</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="u-nav-bookmark" href="/users/bookmark/d2288dea-4043-4700-923d-4b383f95631e">Đã lưu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="u-nav-notifications" href="/users/notifications">Thông báo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="u-nav-edit" href="/users/edit/d2288dea-4043-4700-923d-4b383f95631e">Chỉnh sửa Hồ sơ & Cài đặt</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="row">
+            <div class="col-lg-3">
+
+                <div class="block block-rounded block-fx-shadow">
+                    <div class="block-header block-header-default">
+                        <h3 class="block-title font-w600"><i class="fas fa-cog fa-fw"></i> Cài đặt</h3>
+                    </div>
+                    <div class="block-content">
+                        <ul class="nav nav-pills flex-column push">
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center justify-content-between" id="u-vnav-edit" href="/users/edit/d2288dea-4043-4700-923d-4b383f95631e">
+                                    <span><i class="far fa-fw fa-address-card mr-5"></i> Hồ sơ</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center justify-content-between" id="u-vnav-avatar" href="/users/edit-avatar/d2288dea-4043-4700-923d-4b383f95631e">
+                                    <span><i class="fa fa-fw fa-camera mr-5"></i> Ảnh đại diện</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center justify-content-between" id="u-vnav-password" href="/manage/changepassword">
+                                    <span><i class="fa fa-fw fa-key mr-5"></i> Mật khẩu</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center justify-content-between" id="u-vnav-email" href="/users/email/d2288dea-4043-4700-923d-4b383f95631e">
+                                    <span><i class="fa fa-fw fa-envelope mr-5"></i> Email</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="my-15">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-4680711340186781"
+                         data-ad-slot="1293612754"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        //window.addEventListener('load', function () {
+                        //    (adsbygoogle = window.adsbygoogle || []).push({});
+                        //});
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="block block-rounded block-fx-shadow">
+                    <div class="block-header block-header-default">
+                        <h3 class="block-title font-w600">Chỉnh sửa hồ sơ của bạn</h3>
+                    </div>
+                    <div class="block-content">
+                        <!-- User Profile -->
+                        <form action="/users/edit/d2288dea-4043-4700-923d-4b383f95631e" id="editForm" method="post" role="form">
+                            <input name="__RequestVerificationToken" type="hidden" value="1q8YmNu5XaFvM55qbhbnXerJBidfO6Zjn7I8mi8j7itZWPxyuL0XKkLuZ3088Em4w7bEcDMNJZ72MbaHTRS0352D7SpkSQDR6CRV6-sbe2u_a8VwuAIft2IN7PrLJiarV9A07US6Txw70tYiRlmaiQ2" /><input id="Id" name="Id" type="hidden" value="d2288dea-4043-4700-923d-4b383f95631e" />                        <h2 class="content-heading text-black pt-0">Thông tin cơ bản</h2>
+                            <div class="row items-push">
+                                <div class="col-lg-3">
+                                    <p class="text-muted">
+                                        Giới thiệu để mọi người hiểu thêm về bạn. Một số thông tin sẽ được hiển thị công khai.
+                                    </p>
+                                </div>
+                                <div class="col-lg-7 offset-lg-1">
+                                    <div class="form-group row">
+                                        <div class="col-12">
+                                            <label for="RealName">T&#234;n hiển thị</label>
+                                            <input class="form-control form-control-lg" data-val="true" data-val-length="Tên hiển thị tối đa 50 ký tự" data-val-length-max="50" data-val-required="Tên hiển thị không được để trống" id="RealName" name="RealName" placeholder="Tên hiển thị" type="text" value="nicotin" />
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="RealName" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row gutters-tiny">
+                                        <div class="col-9">
+                                            <label for="Birthday">Ng&#224;y sinh</label>
+                                            <input Value="20/06/2001" class="js-datepicker form-control form-control-lg" data-autoclose="true" data-date-format="dd/mm/yyyy" data-today-highlight="true" data-val="true" data-val-date="The field Ngày sinh must be a date." data-week-start="1" id="Birthday" name="Birthday" placeholder="dd/mm/yyyy" readonly="readonly" type="text" value="20/06/2001 12:00:00 AM" />
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="Birthday" data-valmsg-replace="true"></span>
+                                        </div>
+                                        <div class="col-3 text-right">
+                                            <label class="d-block">Công khai</label>
+                                            <label class="css-control css-control-success css-control-lg css-switch">
+                                                <input class="css-control-input" data-val="true" data-val-required="The Công khai field is required." id="PublicBirthday" name="PublicBirthday" type="checkbox" value="true" /><input name="PublicBirthday" type="hidden" value="false" />
+                                                <span class="css-control-indicator"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row gutters-tiny">
+                                        <div class="col-9">
+                                            <label for="Gender">Giới t&#237;nh</label>
+                                            <select class="form-control form-control-lg" data-val="true" data-val-range="Giới tính không đúng" data-val-range-max="3" data-val-range-min="0" data-val-required="Giới tính không được để trống" id="Gender" name="Gender">
+                                                <option value="0">Kh&#244;ng x&#225;c định</option>
+                                                <option selected="selected" value="1">Nam</option>
+                                                <option value="2">Nữ</option>
+                                                <option value="3">Kh&#225;c</option>
+                                            </select>
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="Gender" data-valmsg-replace="true"></span>
+                                        </div>
+                                        <div class="col-3 text-right">
+                                            <label class="d-block">Công khai</label>
+                                            <label class="css-control css-control-success css-control-lg css-switch">
+                                                <input class="css-control-input" data-val="true" data-val-required="The Công khai field is required." id="PublicGender" name="PublicGender" type="checkbox" value="true" /><input name="PublicGender" type="hidden" value="false" />
+                                                <span class="css-control-indicator"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-12">
+                                            <label for="Job">Nghề nghiệp</label>
+                                            <textarea class="form-control form-control-lg" cols="5" data-val="true" data-val-length="Nghề nghiệp tối đa 200 ký tự" data-val-length-max="200" id="Job" name="Job" placeholder="Kỹ sư, giáo viên, sinh viên, ..." rows="3">
+</textarea>
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="Job" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-12">
+                                            <label for="Skills">Kỹ năng chuy&#234;n m&#244;n</label>
+                                            <textarea class="form-control form-control-lg" cols="5" id="Skills" name="Skills" placeholder="C++, C#, Java, Web, App, ..." rows="3">
+</textarea>
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="Skills" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-12">
+                                            <label for="About">Về t&#244;i</label>
+                                            <textarea class="form-control form-control-lg" cols="5" id="About" name="About" rows="3">
+</textarea>
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="About" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h2 class="content-heading text-black pt-0">Thông tin liên hệ</h2>
+                            <div class="row items-push">
+                                <div class="col-lg-3">
+                                    <p class="text-muted">
+                                        Thông tin để mọi người có thể liên lạc với bạn khi cần.
+                                    </p>
+                                </div>
+                                <div class="col-lg-7 offset-lg-1">
+                                    <div class="form-group row gutters-tiny">
+                                        <div class="col-9">
+                                            <label for="Phone">Số điện thoại</label>
+                                            <input class="form-control form-control-lg" data-val="true" data-val-length="Số điện thoại không đúng" data-val-length-max="13" data-val-length-min="10" id="Phone" name="Phone" placeholder="Số điện thoại" type="text" value="" />
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="Phone" data-valmsg-replace="true"></span>
+                                        </div>
+                                        <div class="col-3 text-right">
+                                            <label class="d-block">Công khai</label>
+                                            <label class="css-control css-control-success css-control-lg css-switch">
+                                                <input class="css-control-input" data-val="true" data-val-required="The Công khai field is required." id="PublicPhone" name="PublicPhone" type="checkbox" value="true" /><input name="PublicPhone" type="hidden" value="false" />
+                                                <span class="css-control-indicator"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row gutters-tiny">
+                                        <div class="col-9">
+                                            <label for="Address">Địa chỉ</label>
+                                            <input class="form-control form-control-lg" data-val="true" data-val-length="Địa chỉ tối đa 200 ký tự" data-val-length-max="200" id="Address" name="Address" placeholder="Ngày sinh" type="text" value="" />
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="Address" data-valmsg-replace="true"></span>
+                                        </div>
+                                        <div class="col-3 text-right">
+                                            <label class="d-block">Công khai</label>
+                                            <label class="css-control css-control-success css-control-lg css-switch">
+                                                <input class="css-control-input" data-val="true" data-val-required="The Công khai field is required." id="PublicAddress" name="PublicAddress" type="checkbox" value="true" /><input name="PublicAddress" type="hidden" value="false" />
+                                                <span class="css-control-indicator"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-12">
+                                            <label for="Website">Website</label>
+                                            <div class="input-group input-group-lg">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="fas fa-link fa-fw"></i>
+                                                    </span>
+                                                </div>
+                                                <input class="form-control" data-val="true" data-val-length="Website tối đa 200 ký tự" data-val-length-max="200" id="Website" name="Website" placeholder="Website (http(s)://..)" type="text" value="" />
+                                            </div>
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="Website" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-12">
+                                            <label for="Facebook">Facebook</label>
+                                            <div class="input-group input-group-lg">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="fab fa-facebook-f fa-fw"></i>
+                                                    </span>
+                                                </div>
+                                                <input class="form-control" data-val="true" data-val-length="Facebook tối đa 200 ký tự" data-val-length-max="200" id="Facebook" name="Facebook" placeholder="Facebook link" type="text" value="" />
+                                            </div>
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="Facebook" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-12">
+                                            <label for="Google">Email</label>
+                                            <div class="input-group input-group-lg">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="fas fa-envelope fa-fw"></i>
+                                                    </span>
+                                                </div>
+                                                <input class="form-control" data-val="true" data-val-length="Email tối đa 200 ký tự" data-val-length-max="200" id="Google" name="Google" placeholder="Google+ link" type="text" value="" />
+                                            </div>
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="Google" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row mt-20">
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-primary btn-noborder"><i class="fas fa-save fa-fw"></i> Lưu thay đổi</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>                    <!-- END User Profile -->
+                    </div>
+                </div>
+
+                <div class="my-15">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-4680711340186781"
+                         data-ad-slot="1293612754"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        window.addEventListener('load', function () {
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        });
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+<!-- END Main Container -->

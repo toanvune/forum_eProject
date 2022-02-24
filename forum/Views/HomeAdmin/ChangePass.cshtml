@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewData["Title"] = "ChangePass";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@model forum.Models.Account
+
+<div class="m-subheader ">
+    <div class="d-flex align-items-center">
+        <div class="mr-auto">
+            <h3 class="m-subheader__title m-subheader__title--separator">Change Password</h3>
+            <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+                <li class="m-nav__item m-nav__item--home">
+                    <a asp-controller="homeadmin" asp-action="index" class="m-nav__link m-nav__link--icon">
+                        <i class="m-nav__link-icon la la-home"></i>
+                    </a>
+                </li>
+                <li class="m-nav__separator">-</li>
+                <li class="m-nav__item">
+                    <a asp-controller="homeadmin" asp-action="changepass" class="m-nav__link">
+                        <span class="m-nav__link-text">Change Password </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="m-content">
+    <div class="m-portlet m-portlet--tab">
+        <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                    <span class="m-portlet__head-icon m--hide">
+                        <i class="la la-gear"></i>
+                    </span>
+                    <h3 class="m-portlet__head-text">
+                        Change Password
+                    </h3>
+                </div>
+            </div>
+        </div>
+
+        
+        <form class="m-form m-form--fit m-form--label-align-right" method="post">
+            <div class="m-portlet__body">
+                @if (ViewBag.Error != null)
+                {
+                    <div class="alert alert-danger">
+                        <strong>@ViewBag.Error!</strong>
+                    </div>}
+                <div class="form-group m-form__group">
+                    <label for="exampleInputPassword1">Password</label>
+                    @Html.TextBoxFor(model => model.PassHash, new { @class = "form-control m-input m-input--air m-input--pill", Type = "Password", id = "exampleInputPassword1", placeholder = "Password", autocomplete = "off" })
+                </div>
+                @*<div class="form-group m-form__group">
+                    <label for="exampleInputPassword1">New Password</label>
+                    @Html.TextBoxFor(model => model.NewPassword, new { @class = "form-control m-input m-input--air m-input--pill", Type = "Password", id = "exampleInputPassword1", placeholder = "new Password", autocomplete = "off" })
+                </div>*@
+                @*<div class="form-group m-form__group">
+                    <label for="exampleInputPassword1">Confirm New Password</label>
+                    @Html.TextBoxFor(model => model.ConfirmNewPassword, new { @class = "form-control m-input m-input--air m-input--pill", Type = "Password", id = "exampleInputPassword1", placeholder = "New Password", autocomplete = "off" })
+                </div>*@
+
+            </div>
+            <div class="m-portlet__foot m-portlet__foot--fit">
+                <div class="m-form__actions">
+                    @Html.HiddenFor(model => model.Id)
+                    <button type="submit" class="btn btn-brand">Lưu thay đổi</button>
+                    <button type="reset" class="btn btn-secondary">Hủy bỏ</button>
+                </div>
+            </div>
+        </form>
+
+        
+    </div>
+
+</div>
+
